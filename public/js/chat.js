@@ -4,7 +4,7 @@ const socket = io()
 const $messageForm = document.querySelector('#message-form')
 const $messageFormInput = $messageForm.querySelector('input')
 const $messageFormButton = $messageForm.querySelector('button')
-const $sendLocationButton=document.querySelector('#send-location') 
+const $sendLocationButton = document.querySelector('#send-location') 
 const $messages = document.querySelector('#messages')
 
 //templates
@@ -114,8 +114,12 @@ $messageForm.addEventListener('submit', (e)=> {
 
 
 socket.emit('join', {username,room}, (error)=>{
-    alert(error)
-    location.href='/'
+    if (error) {
+        alert(error)
+        location.href='/'
+
+    }
+    
 
 
 })
